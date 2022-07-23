@@ -1,12 +1,9 @@
-FROM alpine:3.7
+FROM alpine:latest
 
-LABEL maintainer "Phil K (ucode1337/ucode.space)"
+LABEL maintainer "Joshua Marsh"
 
 EXPOSE 25565/tcp
 EXPOSE 25565/udp
-
-ENV Xms=1G
-ENV Xmx=4G
 
 RUN apk add --update --no-cache openjdk8-jre wget nss
 
@@ -16,4 +13,4 @@ COPY files /data
 
 WORKDIR /data
 
-ENTRYPOINT ["java", "-Xms1G", "-Xmx4G", "-server", "-jar", "/data/forge.jar", "nogui"]
+ENTRYPOINT ["java", "-Xms3G", "-Xmx5G", "-jar", "forge-1.16.5-36.2.34.jar", "nogui"]
